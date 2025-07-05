@@ -1,0 +1,16 @@
+flask
+fastapi
+uvicorn
+streamlit
+spacy
+nltk
+beautifulsoup4
+requests
+neo4j
+langchain
+openai
+pdfplumber
+python-docx
+pandas
+openpyxl
+selenium

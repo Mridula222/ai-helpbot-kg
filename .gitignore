@@ -1,0 +1,10 @@
+# Ignore virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Ignore Python notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE/editor settings
+.vscode/
