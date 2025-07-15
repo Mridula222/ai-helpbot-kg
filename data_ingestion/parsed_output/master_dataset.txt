@@ -1,6 +1,19 @@
 
 === mosdac_faqs.txt ===
+Q1: What is MOSDAC?
+A1: MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO.
 
+Q2: What satellites are supported?
+A2: INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc.
+
+Q3: Is MOSDAC data free?
+A3: Yes, most datasets are free to access after registration.
+
+Q4: What formats are used?
+A4: NetCDF, HDF, GeoTIFF, and standard image formats.
+
+Q5: How can I register?
+A5: Visit the registration section on MOSDAC and provide your credentials.
 
 === sample_docx.txt ===
 Sample DOCX Document

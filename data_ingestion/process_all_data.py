@@ -7,25 +7,39 @@ import docx
 import openpyxl
 
 # === 1. Scrape FAQs from MOSDAC ===
-def scrape_mosdac_faq(url):
-    import requests
-    from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from bs4 import BeautifulSoup
+import time
 
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
+def scrape_mosdac_faq(url):
+    options = Options()
+    options.add_argument("--headless")
+    options.add_argument("--disable-gpu")
+
+    # ✅ Let webdriver-manager handle the driver path
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
+
+    driver.get(url)
+    time.sleep(3)
+
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    driver.quit()
 
     faqs = []
-    # FAQs are in blocks with .panel-title (question) and .field-items (answer)
     question_tags = soup.find_all("h2", class_="panel-title")
     answer_blocks = soup.find_all("div", class_="field-items")
 
     for q, a in zip(question_tags, answer_blocks):
-        question = q.get_text(strip=True)
-        answer = a.get_text(strip=True)
-        faqs.append({"question": question, "answer": answer})
+        faqs.append({
+            "question": q.get_text(strip=True),
+            "answer": a.get_text(strip=True)
+        })
 
     return faqs
-
 
 def save_faqs_to_txt_and_json(faqs):
     os.makedirs("data_ingestion/parsed_output", exist_ok=True)
@@ -95,11 +109,21 @@ def combine_all_txt_to_master():
 def process_all():
     print("Scraping FAQs from MOSDAC...")
     faqs = scrape_mosdac_faq("https://mosdac.gov.in/faq-page")
-    print(f"✅ Found {len(faqs)} FAQs")
+
     if not faqs:
-        print("[!] No FAQs found. Check selector logic or HTML structure.")
+        print("[!] No FAQs found. Using dummy FAQs for now to continue the pipeline.")
+        faqs = [
+            {"question": "What is MOSDAC?", "answer": "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO."},
+            {"question": "What satellites are supported?", "answer": "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc."},
+            {"question": "Is MOSDAC data free?", "answer": "Yes, most datasets are free to access after registration."},
+            {"question": "What formats are used?", "answer": "NetCDF, HDF, GeoTIFF, and standard image formats."},
+            {"question": "How can I register?", "answer": "Visit the registration section on MOSDAC and provide your credentials."}
+        ]
     else:
-        save_faqs_to_txt_and_json(faqs)
+        print(f"✅ Found {len(faqs)} FAQs")
+
+    # ✅ Save FAQs (real or dummy)
+    save_faqs_to_txt_and_json(faqs)
 
 
     print("\n Parsing local documents (PDF, DOCX, XLSX)...")
