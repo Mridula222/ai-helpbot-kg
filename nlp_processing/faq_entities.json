@@ -1,0 +1,59 @@
+[
+  {
+    "question": "What is MOSDAC?",
+    "answer": "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO.",
+    "entities": [
+      [
+        "Meteorological and Oceanographic Satellite Data Archival Centre",
+        "ORG"
+      ],
+      [
+        "ISRO",
+        "ORG"
+      ]
+    ]
+  },
+  {
+    "question": "What satellites are supported?",
+    "answer": "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc.",
+    "entities": [
+      [
+        "INSAT-3D",
+        "PRODUCT"
+      ],
+      [
+        "SCATSAT-1",
+        "GPE"
+      ]
+    ]
+  },
+  {
+    "question": "Is MOSDAC data free?",
+    "answer": "Yes, most datasets are free to access after registration.",
+    "entities": []
+  },
+  {
+    "question": "What formats are used?",
+    "answer": "NetCDF, HDF, GeoTIFF, and standard image formats.",
+    "entities": [
+      [
+        "HDF",
+        "ORG"
+      ],
+      [
+        "GeoTIFF",
+        "ORG"
+      ]
+    ]
+  },
+  {
+    "question": "How can I register?",
+    "answer": "Visit the registration section on MOSDAC and provide your credentials.",
+    "entities": [
+      [
+        "MOSDAC",
+        "ORG"
+      ]
+    ]
+  }
+]
