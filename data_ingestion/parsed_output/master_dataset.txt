@@ -1,0 +1,16 @@
+
+=== mosdac_faqs.txt ===
+
+
+=== sample_docx.txt ===
+Sample DOCX Document
+This is a test paragraph in a Word document.
+
+=== sample_pdf.txt ===
+Sample PDF Document
+This is a test page for parsing.
+
+=== sample_xlsx.txt ===
+Name | Value | Date
+Temperature | 34.5 | 2025-07-15
+Humidity | 78 | 2025-07-15
