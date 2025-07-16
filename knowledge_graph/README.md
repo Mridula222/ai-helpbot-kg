@@ -21,7 +21,7 @@ This graph is used by the bot to fetch contextual, accurate responses based on u
 | ------------------- | --------------------------------------------------------- |
 | `kg_data.json`      | Stores the knowledge graph (entities, locations, sources) |
 | `kg_query.py`       | Core script to query the graph using entity and location  |
-| `kg_builder.py`     | (Optional) Script to auto-generate or update the KG       |
+| `kg_builder.py`     | Script to auto-generate or update the KG                  |
 | `sample_queries.py` | For testing the KG logic manually                         |
 | `.gitkeep`          | Keeps the folder tracked in version control               |
 | `README.md`         | Documentation of this module                              |
