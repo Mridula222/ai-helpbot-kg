@@ -1,0 +1,70 @@
+{
+  "Meteorological and Oceanographic Satellite Data Archival Centre": {
+    "type": "ORG",
+    "description": "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO.",
+    "related_entities": [
+      "ISRO"
+    ],
+    "info": [
+      "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO."
+    ]
+  },
+  "ISRO": {
+    "type": "ORG",
+    "description": "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO.",
+    "related_entities": [
+      "Meteorological and Oceanographic Satellite Data Archival Centre"
+    ],
+    "info": [
+      "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO."
+    ]
+  },
+  "INSAT-3D": {
+    "type": "PRODUCT",
+    "description": "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc.",
+    "related_entities": [
+      "SCATSAT-1"
+    ],
+    "info": [
+      "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc."
+    ]
+  },
+  "SCATSAT-1": {
+    "type": "GPE",
+    "description": "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc.",
+    "related_entities": [
+      "INSAT-3D"
+    ],
+    "info": [
+      "INSAT-3D, SCATSAT-1, Oceansat-2, Oceansat-3, etc."
+    ]
+  },
+  "HDF": {
+    "type": "ORG",
+    "description": "NetCDF, HDF, GeoTIFF, and standard image formats.",
+    "related_entities": [
+      "GeoTIFF"
+    ],
+    "info": [
+      "NetCDF, HDF, GeoTIFF, and standard image formats."
+    ]
+  },
+  "GeoTIFF": {
+    "type": "ORG",
+    "description": "NetCDF, HDF, GeoTIFF, and standard image formats.",
+    "related_entities": [
+      "HDF"
+    ],
+    "info": [
+      "NetCDF, HDF, GeoTIFF, and standard image formats."
+    ]
+  },
+  "MOSDAC": {
+    "type": "ORG",
+    "description": "Visit the registration section on MOSDAC and provide your credentials.",
+    "related_entities": [],
+    "info": [
+      "Visit the registration section on MOSDAC and provide your credentials."
+    ]
+  }
+}
