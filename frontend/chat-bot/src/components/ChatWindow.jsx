@@ -53,7 +53,7 @@ function ChatWindow() {
 
       <div className="chat-body">
         <div className="intro-box">
-          <h2>Welcome to AI Assistant</h2>
+          <h2><i className="fa-solid fa-robot"></i> Welcome to AI Assistant</h2>
           <p>Ask me anything from technical questions to design advice!</p>
           <div className="suggestions">
             <button onClick={() => setInputValue('Hackathon ideas')}>Hackathon ideas</button>
