@@ -1,5 +1,5 @@
 
-# 🧾 Data Ingestion Module (Member 1)
+# 🧾 Data Ingestion Module (Member 1 - Team Leader)
 
 This module is part of the **AI Help Bot** project developed for the **Bharatiya Antariksh Hackathon**. It focuses on collecting and preparing structured data from both the **MOSDAC website** and **official documents** for further processing in NLP and Knowledge Graph modules.
 
