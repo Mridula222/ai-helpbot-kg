@@ -132,7 +132,7 @@ body, html, #root {
 .chat-input {
   position: fixed;
   bottom: 0;
-  left: 280px; /* width of the sidebar */
+  left: 320px; /* width of the sidebar */
   right: 0;
   padding: 15px;
   background-color: white;
@@ -157,4 +157,70 @@ body, html, #root {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
+}
+.upload-button {
+  background: #e5e7eb;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  color: #4f46e5;
+  font-size: 16px;
+}
+.chat-text-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+@media (max-width: 768px) {
+  .chat-input {
+    left: 0;
+    width: 100%;
+  }
+
+  .sidebar {
+    display: none; /* or make collapsible */
+  }
+}
+/* .search-wrapper {
+  position: relative;
+  margin: 15px 0px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 1px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+}
+
+.search {
+  width: 100%;
+  padding: 8px 8px 8px 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-right: 5px;
+} */
+.message {
+  padding: 10px 14px;
+  margin: 10px;
+  border-radius: 10px;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+
+.message.user {
+  background-color: #d1e7dd;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.message.bot {
+  background-color: #f3f4f6;
+  align-self: flex-start;
+  margin-right: auto;
 }
