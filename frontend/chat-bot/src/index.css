@@ -13,11 +13,12 @@ body, html, #root {
 /* Sidebar */
 .sidebar {
   width: 280px;
-  background-color: #f7f7f8;
+  background-color: #d6e4ff;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e7ff;
+  box-shadow: inset -1px 0 6px rgba(0, 0, 0, 0.02);
 }
 
 .sidebar h2 {
@@ -31,6 +32,9 @@ body, html, #root {
   border: none;
   border-radius: 6px;
   cursor: pointer;
+}
+.new-chat:hover {
+  background-color: #5a78e6; /* a bit deeper on hover */
 }
 
 .search {
@@ -68,8 +72,10 @@ body, html, #root {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-   height: 100vh;
+   background-color: #fefefe; /* warm white */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04); /* soft drop shadow */
+  border-radius: 0px 12px 12px 0px; /* optional for smooth edge */
+  height: 100vh;
 }
 
 .chat-header {
@@ -94,10 +100,15 @@ body, html, #root {
   padding-bottom: 100px; /* Make room for fixed input */
   overflow-y: auto;
   flex-grow: 1;
-  background-color: #fafafa;
+ background: linear-gradient(-45deg, #fceff9, #fde7f3, #e0f7fa, #e4f0ff);
+  background-size: 400% 400%;
+  animation: gradientFlow 10s ease infinite;
 }
-
-
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .intro-box {
   text-align: center;
   margin-bottom: 20px;
@@ -122,6 +133,7 @@ body, html, #root {
   padding: 12px;
   border-radius: 12px;
   background-color: #f3f4f6;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 .message.bot {
@@ -151,7 +163,7 @@ body, html, #root {
 }
 
 .chat-input button {
-  background: #4f46e5;
+  background: linear-gradient(to right, #6366F1, #4F46E5);
   color: white;
   border: none;
   padding: 10px 15px;
@@ -214,9 +226,10 @@ body, html, #root {
 }
 
 .message.user {
-  background-color: #d1e7dd;
+  background-color:#e8e5ff;
   align-self: flex-end;
   margin-left: auto;
+  color: black;
 }
 
 .message.bot {
