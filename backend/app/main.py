@@ -1,9 +1,10 @@
 import sys
 import os
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, UploadFile, File
 from pydantic import BaseModel
 
+# Setup paths for your modules
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,3 +28,20 @@ async def chat_endpoint(request: ChatRequest):
         return {"reply": kg_result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/uploadfile/")
+async def upload_file(file: UploadFile = File(...)):
+    if file.content_type != "text/plain":
+        raise HTTPException(status_code=400, detail="Only plain text files are accepted.")
+    
+    content = await file.read()
+    text = content.decode("utf-8")
+
+    # Process the uploaded text file using your NLP pipeline
+    entities = process_nlp(text)
+
+    return {
+        "filename": file.filename,
+        "content_length": len(content),
+        "entities_extracted": entities
+    }
