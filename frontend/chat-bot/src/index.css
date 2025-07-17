@@ -13,7 +13,7 @@ body, html, #root {
 /* Sidebar */
 .sidebar {
   width: 280px;
-  background-color: #d6e4ff;
+  background-color: #cbf1f4;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -65,7 +65,30 @@ body, html, #root {
   margin-top: auto;
   padding-top: 20px;
   font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+
+.User{
+  position: relative;
+  right:20px;
+}
+
+.User:hover{
+ transform: scale(1.2);
+}
+.Free{
+  position: relative;
+  left:20px;
+  top: 2px;
+}
+
+.Free:hover{
+ transform: scale(1.2);
+}
+
 
 /* Chat Window */
 .chat-window {
@@ -100,14 +123,14 @@ body, html, #root {
   padding-bottom: 100px; /* Make room for fixed input */
   overflow-y: auto;
   flex-grow: 1;
- background: linear-gradient(-45deg, #fceff9, #fde7f3, #e0f7fa, #e4f0ff);
-  background-size: 400% 400%;
-  animation: gradientFlow 10s ease infinite;
+background: linear-gradient(120deg, #d0e8f2, #fef9e7, #bfeaf5, #fffbe0, #a7dbf0, #ccefff);
+background-size: 300% 300%;
+animation: gradientShift 12s ease-in-out infinite;
 }
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 .intro-box {
   text-align: center;
@@ -226,10 +249,10 @@ body, html, #root {
 }
 
 .message.user {
-  background-color:#e8e5ff;
+  background-color: rgba(255, 253, 235, 0.8); /* soft lemon tint */
+  color: #2d2d2d;
   align-self: flex-end;
   margin-left: auto;
-  color: black;
 }
 
 .message.bot {

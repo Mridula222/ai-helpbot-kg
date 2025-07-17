@@ -18,8 +18,8 @@ function Sidebar() {
         <div className="chat-item">AI Ethics Discussion</div>
       </div>
       <div className="user-section">
-        <p><i className="fa-solid fa-user"></i> User</p>
-        <small><i className="fa-solid fa-bolt"></i> Free Plan</small>
+        <p className="User"><i className="fa-solid fa-user"></i> User</p>
+        <p className="Free"><i className="fa-solid fa-bolt"></i> Free Plan</p>
       </div>
     </div>
   );
