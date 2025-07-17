@@ -19,12 +19,6 @@
       "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO."
     ]
   },
-  "MOSDAC": {
-    "type": "ORG",
-    "description": "MOSDAC stands for Meteorological and Oceanographic Satellite Data Archival Centre by ISRO, providing satellite data services.",
-    "related_entities": ["ISRO", "Satellite Data"],
-    "info": ["Operated by ISRO", "Focuses on weather and ocean data"]
-  },
   "Surya": {
     "type": "PRODUCT",
     "description": "Surya is an Indian Earth observation satellite launched by ISRO in 2013 that monitors solar activities.",

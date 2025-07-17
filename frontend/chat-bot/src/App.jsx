@@ -4,16 +4,26 @@ import ChatWindow from './components/ChatWindow';
 import './index.css';
 
 function App() {
-  const [chatHistory, setChatHistory] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      sender: 'bot',
+      text: `🤖 Hi! I’m your MOSDAC AI assistant. I’m here to help you find satellite data, mission info, and answer your questions about the MOSDAC portal. How can I assist you today?`,
+    },
+  ]);
 
   const startNewChat = () => {
-    setChatHistory([]); // Clears old messages
+    setMessages([
+      {
+        sender: 'bot',
+        text: `🤖 Hi! I’m your MOSDAC AI assistant. I’m here to help you find satellite data, mission info, and answer your questions about the MOSDAC portal. How can I assist you today?`,
+      },
+    ]);
   };
 
   return (
     <div className="app">
       <Sidebar onNewChat={startNewChat} />
-      <ChatWindow chatHistory={chatHistory} setChatHistory={setChatHistory} />
+      <ChatWindow messages={messages} setMessages={setMessages} />
     </div>
   );
 }
