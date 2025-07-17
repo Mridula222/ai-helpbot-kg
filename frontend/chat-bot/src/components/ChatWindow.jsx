@@ -13,7 +13,7 @@ function ChatWindow() {
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: `🤖 Hi there! I'm your AI assistant. I can help with brainstorming ideas, answering questions, or discussing any topic you're interested in. How can I assist with your hackathon project today?`,
+      text: `🤖 Hi! I’m your MOSDAC AI assistant. I’m here to help you find satellite data, mission info, and answer your questions about the MOSDAC portal. How can I assist you today?`,
     },
   ]);
 
@@ -43,7 +43,7 @@ function ChatWindow() {
     <div className="chat-window">
       <div className="chat-header">
         <div>
-          <h3>Project Brainstorming</h3>
+          <h3>Ask About MOSDAC</h3>
           <span className="status">🟢 Active now</span>
         </div>
         <div className="header-actions">
@@ -54,11 +54,11 @@ function ChatWindow() {
       <div className="chat-body">
         <div className="intro-box">
           <h2><i className="fa-solid fa-robot"></i> Welcome to AI Assistant</h2>
-          <p>Ask me anything from technical questions to design advice!</p>
+          <p>Your smart assistant for satellite data, FAQs, and MOSDAC support!</p>
           <div className="suggestions">
-            <button onClick={() => setInputValue('Hackathon ideas')}>Hackathon ideas</button>
-            <button onClick={() => setInputValue('Tech stack advice')}>Tech stack advice</button>
-            <button onClick={() => setInputValue('UI/UX best practices')}>UI/UX best practices</button>
+            <button onClick={() => setInputValue('Hackathon ideas')}>Satellite Data Queries</button>
+            <button onClick={() => setInputValue('Tech stack advice')}>MOSDAC Portal Guide</button>
+            <button onClick={() => setInputValue('UI/UX best practices')}>Download & Access Support</button>
           </div>
         </div>
 
