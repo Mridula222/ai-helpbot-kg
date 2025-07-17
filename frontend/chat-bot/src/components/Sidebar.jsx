@@ -12,10 +12,11 @@ function Sidebar() {
       </div> */}
 
       <div className="chat-list">
-        <div className="chat-item ">Project Brainstorming</div>
-        <div className="chat-item">Marketing Strategy</div>
-        <div className="chat-item">Code Debugging</div>
-        <div className="chat-item">AI Ethics Discussion</div>
+        <div className="chat-item ">Satellite Data Queries</div>
+        <div className="chat-item">Mission Updates & Info</div>
+        <div className="chat-item">Data Access & Download Help</div>
+        <div className="chat-item">Data Visualization Tips</div>
+        <div className="chat-item">MOSDAC Portal Guide</div>
       </div>
       <div className="user-section">
         <p className="User"><i className="fa-solid fa-user"></i> User</p>
