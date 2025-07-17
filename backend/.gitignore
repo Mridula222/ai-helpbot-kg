@@ -1,0 +1,26 @@
+# Node modules – never commit this
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# User uploads
+uploads/
+
+# OS-specific clutter
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
+
+# Test coverage (if used)
+coverage/
+
+# Build folders (if compiled)
+dist/
+build/
