@@ -89,7 +89,6 @@ body, html, #root {
  transform: scale(1.2);
 }
 
-
 /* Chat Window */
 .chat-window {
   flex: 1;
