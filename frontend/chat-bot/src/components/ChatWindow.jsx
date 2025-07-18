@@ -35,10 +35,9 @@ function ChatWindow() {
     .join('\n');
 
   const botReply = {
-  sender: 'bot',
-  text: `✅ File processed. Extracted entities:\n${JSON.stringify(data.entities_extracted, null, 2)}\n\nKnowledge Graph Info:\n${data.kg_summary || "No additional info."}`,
-};
-
+    sender: 'bot',
+    text: `✅ File processed. Extracted entities:\n${JSON.stringify(data.entities_extracted, null, 2)}\n\nKnowledge Graph Info:\n${data.kg_summary || "No additional info."}`,
+  };
   setMessages((prev) => [...prev, botReply]);
 } catch (error) {
   const errorReply = {
