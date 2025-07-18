@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 
-
-function ChatWindow() {
+function ChatWindow({ messages, setMessages }) {
   const [inputValue, setInputValue] = useState('');
-  const [messages, setMessages] = useState([
-    {
-      sender: 'bot',
-      text: `🤖 Hi! I’m your MOSDAC AI assistant. I’m here to help you find satellite data, mission info, and answer your questions about the MOSDAC portal. How can I assist you today?`,
-    },
-  ]);
+
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -23,65 +17,56 @@ function ChatWindow() {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-  const response = await fetch("http://127.0.0.1:8000/uploadfile/", {
-    method: "POST",
-    body: formData,
-  });
+      const response = await fetch("http://127.0.0.1:8000/uploadfile/", {
+        method: "POST",
+        body: formData,
+      });
 
-  const data = await response.json();
-  const entities = data.entities_extracted;
-  const formattedEntities = Object.entries(entities)
-    .map(([entity, label]) => `${entity}: ${label}`)
-    .join('\n');
+      const data = await response.json();
 
-  const botReply = {
-    sender: 'bot',
-    text: `✅ File processed. Extracted entities:\n${JSON.stringify(data.entities_extracted, null, 2)}\n\nKnowledge Graph Info:\n${data.kg_summary || "No additional info."}`,
+      const botReply = {
+        sender: 'bot',
+        text: `✅ File processed. Extracted entities:\n${JSON.stringify(data.entities_extracted, null, 2)}\n\nKnowledge Graph Info:\n${data.kg_summary || "No additional info."}`,
+      };
+      setMessages((prev) => [...prev, botReply]);
+    } catch (error) {
+      const errorReply = {
+        sender: 'bot',
+        text: `⚠️ File upload failed: ${error.message}`,
+      };
+      setMessages((prev) => [...prev, errorReply]);
+    }
   };
-  setMessages((prev) => [...prev, botReply]);
-} catch (error) {
-  const errorReply = {
-    sender: 'bot',
-    text: `⚠️ File upload failed: ${error.message}`,
-  };
-  setMessages((prev) => [...prev, errorReply]);
-}
-};
+
   const handleSend = async () => {
-  if (!inputValue.trim()) return;
+    if (!inputValue.trim()) return;
 
-  const userMessage = { sender: 'user', text: inputValue };
-  setMessages((prev) => [...prev, userMessage]);
-  setInputValue('');
+    const userMessage = { sender: 'user', text: inputValue };
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue('');
 
-  try {
-    const response = await fetch("http://127.0.0.1:8000/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ message: inputValue }),
-    });
+    try {
+      const response = await fetch("http://127.0.0.1:8000/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: inputValue }),
+      });
 
-    const data = await response.json();
-    const botReply = {
-      sender: 'bot',
-      text: data.reply || "🤖 Sorry, I couldn't find an answer.",
-    };
-    setMessages((prev) => [...prev, botReply]);
-  } catch (error) {
-    const errorReply = {
-      sender: 'bot',
-      text: `⚠️ Error: ${error.message}`,
-    };
-    setMessages((prev) => [...prev, errorReply]);
-  }
-};
-
-
-  // Dummy reply logic – you can make it smarter later
-  const generateBotResponse = (userInput) => {
-    return `🤖 You said: "${userInput}". That's interesting! How can I help further?`;
+      const data = await response.json();
+      const botReply = {
+        sender: 'bot',
+        text: data.reply || "🤖 Sorry, I couldn't find an answer.",
+      };
+      setMessages((prev) => [...prev, botReply]);
+    } catch (error) {
+      const errorReply = {
+        sender: 'bot',
+        text: `⚠️ Error: ${error.message}`,
+      };
+      setMessages((prev) => [...prev, errorReply]);
+    }
   };
 
   return (
@@ -107,7 +92,6 @@ function ChatWindow() {
           </div>
         </div>
 
-        {/* Render messages */}
         {messages.map((msg, index) => (
           <div key={index} className={`message ${msg.sender}`}>
             {msg.text}
