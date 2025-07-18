@@ -62,7 +62,7 @@ async def chat_endpoint(request: ChatRequest):
         if not nlp_result:
             return {"reply": "Sorry, I couldn't extract any relevant information from that."}
         
-        response = query_kg(nlp_result)
+        response = query_kg(nlp_result,request.message)
 
         return {"reply": response or "I processed your message, but couldn't find anything relevant in the knowledge graph."}
 
