@@ -1,10 +1,10 @@
-from entity_extraction import extract_entities
+import spacy
 
-def process_nlp(message: str) -> dict:
-    """
-    Given user message text, extract named entities using spaCy.
-    Returns a dict with entity texts and labels.
-    """
-    entities = extract_entities(message)
-    # For simplicity, return as dict {entity_text: label}
-    return {ent[0]: ent[1] for ent in entities}
+nlp = spacy.load("en_core_web_sm")  # Make sure the model is installed with: python -m spacy download en_core_web_sm
+
+def process_nlp(text):
+    doc = nlp(text)
+    entities = {}
+    for ent in doc.ents:
+        entities[ent.text] = ent.label_
+    return entities

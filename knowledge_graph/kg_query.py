@@ -23,7 +23,8 @@ def query_kg(entity_name):
               Returns None if entity not found.
     """
     entity_name = entity_name.strip()
-    entity_data = knowledge_graph.get(entity_name)
+    entity_data = knowledge_graph.get(entity_name) or knowledge_graph.get(entity_name.lower())
+
 
     if entity_data:
         return {

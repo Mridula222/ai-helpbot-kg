@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
 
-const handleFileUpload = (event) => {
-  const file = event.target.files[0];
-  if (file) {
-    console.log('File uploaded:', file);
-    // TODO: Send to backend or preview
-  }
-};
 
 function ChatWindow() {
   const [inputValue, setInputValue] = useState('');
@@ -16,23 +9,76 @@ function ChatWindow() {
       text: `🤖 Hi! I’m your MOSDAC AI assistant. I’m here to help you find satellite data, mission info, and answer your questions about the MOSDAC portal. How can I assist you today?`,
     },
   ]);
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
 
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+    const formData = new FormData();
+    formData.append("file", file);
 
-    const userMessage = { sender: 'user', text: inputValue };
+    const userMessage = {
+      sender: 'user',
+      text: `📄 Uploaded file: ${file.name}`,
+    };
     setMessages((prev) => [...prev, userMessage]);
-    setInputValue('');
 
-    // Fake bot reply after delay
-    setTimeout(() => {
-      const botReply = {
-        sender: 'bot',
-        text: generateBotResponse(inputValue),
-      };
-      setMessages((prev) => [...prev, botReply]);
-    }, 800); // delay in ms
+    try {
+  const response = await fetch("http://127.0.0.1:8000/uploadfile/", {
+    method: "POST",
+    body: formData,
+  });
+
+  const data = await response.json();
+  const entities = data.entities_extracted;
+  const formattedEntities = Object.entries(entities)
+    .map(([entity, label]) => `${entity}: ${label}`)
+    .join('\n');
+
+  const botReply = {
+  sender: 'bot',
+  text: `✅ File processed. Extracted entities:\n${JSON.stringify(data.entities_extracted, null, 2)}\n\nKnowledge Graph Info:\n${data.kg_summary || "No additional info."}`,
+};
+
+  setMessages((prev) => [...prev, botReply]);
+} catch (error) {
+  const errorReply = {
+    sender: 'bot',
+    text: `⚠️ File upload failed: ${error.message}`,
   };
+  setMessages((prev) => [...prev, errorReply]);
+}
+};
+  const handleSend = async () => {
+  if (!inputValue.trim()) return;
+
+  const userMessage = { sender: 'user', text: inputValue };
+  setMessages((prev) => [...prev, userMessage]);
+  setInputValue('');
+
+  try {
+    const response = await fetch("http://127.0.0.1:8000/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: inputValue }),
+    });
+
+    const data = await response.json();
+    const botReply = {
+      sender: 'bot',
+      text: data.reply || "🤖 Sorry, I couldn't find an answer.",
+    };
+    setMessages((prev) => [...prev, botReply]);
+  } catch (error) {
+    const errorReply = {
+      sender: 'bot',
+      text: `⚠️ Error: ${error.message}`,
+    };
+    setMessages((prev) => [...prev, errorReply]);
+  }
+};
+
 
   // Dummy reply logic – you can make it smarter later
   const generateBotResponse = (userInput) => {
