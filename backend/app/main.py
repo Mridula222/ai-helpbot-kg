@@ -34,13 +34,17 @@ class ChatRequest(BaseModel):
 # Simple rule-based fallback replies
 def basic_reply(message: str) -> str:
     message = message.lower().strip()
-    greetings = ["hi", "hello", "hey"]
+    greetings = ["hi", "hello", "hey", "hola", "good morning", "good afternoon", "good evening"]
     if message in greetings:
-        return "Hello! How can I assist you today?"
+        return "Hello! How can I assist you today? \n Send me a keyword related to MOSDAC, or please check the knowledge graph for more entities."
     elif "how are you" in message:
-        return "I'm doing great! Thanks for asking 😊"
+        return "I'm doing great! Thanks for asking 😊. Please send me a keyword related to MOSDAC for more information."
+    elif "bye" in message or "goodbye" in message:
+        return "Goodbye! Have a great day!"
     elif "who are you" in message:
-        return "I'm your AI assistant powered by NLP and Knowledge Graphs!"
+        return "I'm your AI assistant powered specifically for MOSDAC portal!"
+    elif "i can't understand this" in message or "please explain more" in message or "can you explain more?" in message or "explain more" in message:
+        return "All the relevant information from knowledge graph has already been provided. Please search another entity or related keyword for better responses."
     return None
 
 # Chat endpoint
