@@ -92,3 +92,17 @@ async def upload_file(file: UploadFile = File(...)):
         "entities_extracted": filtered_entities,
         "kg_summary": summary
     }
+import spacy
+import subprocess
+import sys
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
+
+
+@app.get("/")
+def read_root():
+    return {"message": "AI HelpBot API is running 🚀"}

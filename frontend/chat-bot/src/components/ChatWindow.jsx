@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+const API_BASE_URL = "https://ai-helpbot-kg-dfnn.onrender.com"
 function ChatWindow({ messages, setMessages }) {
   const [inputValue, setInputValue] = useState('');
 
@@ -17,7 +17,7 @@ function ChatWindow({ messages, setMessages }) {
     setMessages((prev) => [...prev, userMessage]);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/uploadfile/", {
+      const response = await fetch(`${API_BASE_URL}/uploadfile/`, {
         method: "POST",
         body: formData,
       });
@@ -46,7 +46,7 @@ function ChatWindow({ messages, setMessages }) {
     setInputValue('');
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/chat", {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
