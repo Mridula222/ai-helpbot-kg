@@ -65,3 +65,12 @@ async def upload_file(file: UploadFile = File(...)):
 }
 
 
+import spacy
+import subprocess
+import sys
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
