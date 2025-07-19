@@ -74,3 +74,8 @@ try:
 except OSError:
     subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
+
+
+@app.get("/")
+def read_root():
+    return {"message": "AI HelpBot API is running 🚀"}
