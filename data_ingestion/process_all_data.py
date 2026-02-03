@@ -19,7 +19,7 @@ def scrape_mosdac_faq(url):
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
 
-    # ✅ Let webdriver-manager handle the driver path
+    #  Let webdriver-manager handle the driver path
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
 
@@ -120,9 +120,9 @@ def process_all():
             {"question": "How can I register?", "answer": "Visit the registration section on MOSDAC and provide your credentials."}
         ]
     else:
-        print(f"✅ Found {len(faqs)} FAQs")
+        print(f" Found {len(faqs)} FAQs")
 
-    # ✅ Save FAQs (real or dummy)
+    #  Save FAQs (real or dummy)
     save_faqs_to_txt_and_json(faqs)
 
 
